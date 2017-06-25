@@ -9,6 +9,10 @@ data <- read.table(unzip(temp, "household_power_consumption.txt"),
 datalabel <- read.table(unzip(temp,"household_power_consumption.txt"),
                         nrows=1,sep=";",stringsAsFactors = FALSE)
 unlink(temp)
+
+#setting locale (for handle date/time data in English)
+Sys.setlocale("LC_TIME","C")
+#making dataset
 colnames(data) <- datalabel[,1:9]
 data2 <- mutate(data,Date_Time = paste(Date,Time))
 data2$Date_Time <- strptime(data2$Date_Time, "%d/%m/%Y %H:%M:%S")
