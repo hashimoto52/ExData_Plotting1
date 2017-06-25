@@ -10,7 +10,9 @@ datalabel <- read.table(unzip(temp,"household_power_consumption.txt"),
                         nrows=1,sep=";",stringsAsFactors = FALSE)
 unlink(temp)
 
+#setting locale
 Sys.setlocale("LC_TIME","C")
+#naming data column
 colnames(data) <- datalabel[,1:9]
 
 
